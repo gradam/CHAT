@@ -2,7 +2,11 @@ from django.urls import path
 
 from chat import views
 
+chat_rooms = ['main/', 'female/', 'male/', 'fashion/', 'gaming/', 'social/']
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<str:room_name>/', views.room, name='room'),
+
 ]
+urlpatterns += [path(p, views.room, name='room') for p in chat_rooms]
+
+print(urlpatterns)

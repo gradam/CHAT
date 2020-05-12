@@ -111,7 +111,25 @@ body {
   }
 }
 
-.content{
+.content {
   margin-left: 123px;
   margin-top: 25px;
+  margin-right: 11px;
+}
+
+.selectContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  select {
+    height: 30px;
+    width: 100px;
+    background-color: #287a16;
+  }
+
+  .select-selected {
+    background-color: #287a16;
+
+  }
 }

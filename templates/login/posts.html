@@ -1,0 +1,12 @@
+{% extends 'login/index_login.html' %}
+{% load static %}
+{% block title %}POSTS{% endblock %}
+{% block content  %}
+    <h1>New post create</h1>
+
+    <form method="POST" action="{% url 'posts' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" name="save">Create</button>
+    </form>
+{% endblock %}

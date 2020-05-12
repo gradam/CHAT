@@ -3,10 +3,24 @@
 <!DOCTYPE html>
 {% block title %}Chat rooms{% endblock %}
 {% block content %}
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="25"><br>
-    <input id="room-name-submit" type="button" value="Enter">
+    <p>What chat room would you like to enter?</p><br>
+    <div class="selectContainer">
+        <label>
+            <select id="room-name-input">
 
+                <option Value="main">Main</option>
+                <option Value="male">Males</option>
+                <option Value="female">Females</option>
+                <option Value="fashion">Fashion</option>
+                <option Value="gaming">Gaming</option>
+                <option value="social">Social</option>
+
+            </select>
+        </label>
+    </div>
+    <br>
+
+        <input id="room-name-submit" type="submit"><br>
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function (e) {

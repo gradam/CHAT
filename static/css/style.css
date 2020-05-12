@@ -105,6 +105,21 @@ body {
 .content {
   margin-left: 123px;
   margin-top: 25px;
+  margin-right: 11px;
+}
+
+.selectContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.selectContainer select {
+  height: 30px;
+  width: 100px;
+  background-color: #287a16;
+}
+.selectContainer .select-selected {
+  background-color: #287a16;
 }
 
 /*# sourceMappingURL=style.css.map */

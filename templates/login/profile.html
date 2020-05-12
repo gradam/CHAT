@@ -1,0 +1,10 @@
+{% extends 'login/index_login.html' %}
+{% load static %}
+{% block title %}POST{% endblock %}
+
+{% block content %}
+    <p>Elo</p>
+    {% for i in user.posts.all %}
+        <a href="{{ i.get_absolute_url }}"><h1>{{ i.title }}</h1></a>
+    {% endfor %}
+{% endblock %}

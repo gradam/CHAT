@@ -5,9 +5,10 @@ def index(request):
     return render(request, 'chat/index.html')
 
 
-def room(response, room_name):
+def room(response):
 
     username = response.user.username
+    room_name = 'main'
 
     return render(response, 'chat/room.html', {
         'room_name': room_name,
