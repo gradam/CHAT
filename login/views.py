@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from login.models import Posts
 from login.forms import CreatePost
 
@@ -8,13 +9,13 @@ from login.forms import CreatePost
 def single_post(response, title):
     single_p = Posts.objects.get(title__iexact=title)
     if single_p in response.user.posts.all():
-        return render(response, 'login/single_post.html', {'single_p': single_p})
-    return render(response, 'login/home.html', {'single_p': single_p})
+        return render(response, {'single_p': single_p})
+    return render(response, {'single_p': single_p})
 
 
 def profile_view(response):
     list_posts = Posts.objects.all()
-    return render(response, 'login/profile.html', {'list_posts': list_posts})
+    return render(response, {'list_posts': list_posts})
 
 
 def writing_post_view(response):
@@ -26,10 +27,12 @@ def writing_post_view(response):
             t = Posts(title=tit, text=txt)
             t.save()
             response.user.posts.add(t)
+
+            return HttpResponseRedirect(reverse('single_post', kwargs={'title': t.title}))
     else:
         form = Posts()
 
-    return render(response, 'login/posts.html', {'form': form})
+    return render(response, {'form': form})
 
 
 def home_view(response):
@@ -39,7 +42,7 @@ def home_view(response):
     else:
         log = 'Welcome to ŁB please log in'
 
-    return render(response, 'login/home.html', {'log': log})
+    return render(response, {'log': log})
 
 
 def register(response):
@@ -51,4 +54,4 @@ def register(response):
             return redirect('home')
     else:
         form = UserCreationForm()
-    return render(response, 'login/register.html', {'form': form})
+    return render(response, {'form': form})

@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include('login.urls')),
     path('', include('django.contrib.auth.urls')),
     url(r'^emoji/', include('emoji.urls')),
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 ]

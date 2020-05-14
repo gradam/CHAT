@@ -1,10 +1,9 @@
 from django.urls import path
 from login import views
+from rest_framework import routers
+from login.api import CreateUserView, CreatePostsView
 
-urlpatterns = [
-    path('', views.home_view, name='home'),
-    path('register/', views.register, name='register'),
-    path('posts/', views.writing_post_view, name='posts'),
-    path('profile', views.profile_view, name='profile'),
-    path('posts/<str:title>', views.single_post, name='single_post')
-]
+router = routers.SimpleRouter()
+router.register(r'users', CreateUserView, basename='user')
+router.register(r'posts', CreatePostsView, basename='post')
+urlpatterns = router.urls
