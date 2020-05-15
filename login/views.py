@@ -36,7 +36,6 @@ def writing_post_view(response):
 
 
 def home_view(response):
-
     if response.user.is_authenticated:
         log = f'Hello {response.user.username}'
     else:

@@ -31,8 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'login.apps.LoginConfig',
-    'chat',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'emoji',
     'rest_framework',
+    'login.apps.LoginConfig',
+    'chat',
+
 ]
 
 MIDDLEWARE = [
