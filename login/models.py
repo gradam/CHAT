@@ -12,7 +12,7 @@ class Posts(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('single_post', kwargs={'title': self.title})
+        return reverse('post-detail', kwargs={'pk': self.id})
 
     class Meta:
         verbose_name = 'post'

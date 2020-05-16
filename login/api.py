@@ -7,6 +7,7 @@ from rest_framework import viewsets, mixins
 from login.serializers import UserSerializer, PostsSerializer
 from login.models import Posts
 
+
 class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
     model = get_user_model()
     permission_classes = (
@@ -22,7 +23,6 @@ class CreatePostsView(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         return serializer.save(user=self.request.user)
-        
 
     def get_queryset(self):
         user = self.request.user

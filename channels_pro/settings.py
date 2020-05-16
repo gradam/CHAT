@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'login.apps.LoginConfig',
     'chat',
-
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
