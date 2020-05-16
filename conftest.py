@@ -22,7 +22,6 @@ def user(user_data, django_user_model):
     user.set_password(user_data["password"])
     user.save()
     return user
-# https://pytest-django.readthedocs.io/en/latest/helpers.html#fixtures
 
 
 @pytest.fixture
