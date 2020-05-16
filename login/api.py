@@ -1,11 +1,9 @@
 from rest_framework import permissions
-from rest_framework.generics import CreateAPIView
 from django.contrib.auth import get_user_model
 from rest_framework import viewsets, mixins
 
-
 from login.serializers import UserSerializer, PostsSerializer
-from login.models import Posts
+from login.models import Post
 
 
 class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
@@ -18,7 +16,7 @@ class CreateUserView(viewsets.GenericViewSet, mixins.CreateModelMixin):
 
 
 class CreatePostsView(viewsets.ModelViewSet):
-    model = Posts
+    model = Post
     serializer_class = PostsSerializer
     
     def perform_create(self, serializer):
@@ -27,4 +25,4 @@ class CreatePostsView(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
 
-        return Posts.objects.filter(user=user)
+        return Post.objects.filter(user=user)

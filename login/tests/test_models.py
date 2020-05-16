@@ -1,5 +1,5 @@
 import pytest
-from login.models import Posts
+from login.models import Post
 from model_bakery import baker
 from django.urls import reverse
 from channels.testing import WebsocketCommunicator
@@ -9,18 +9,18 @@ from channels_pro.routing import application
 @pytest.mark.django_db
 class TestPost:
     def test_create_object(self, fake, user):
-        Posts.objects.create(
+        Post.objects.create(
             user=user,
             title=fake.sentence(),
             text=fake.text()
         )
 
-        post = Posts.objects.all()
+        post = Post.objects.all()
 
         assert post.count() == 1
 
     def test_get_url(self, fake, user, user_client):
-        post = Posts.objects.create(
+        post = Post.objects.create(
             user=user,
             title=fake.sentence(),
             text=fake.text()
@@ -36,13 +36,13 @@ class TestPost:
 class TestApi:
     def test_get_queryset(self, fake, user, django_user_model, user_client):
         for i in range(10):
-            Posts.objects.create(
+            Post.objects.create(
                 user=user,
                 title=fake.sentence(),
                 text=fake.text()
             )
 
-        wrong_post = Posts.objects.create(
+        wrong_post = Post.objects.create(
             user=baker.make(django_user_model, username=fake.name()),
             title=fake.sentence(),
             text=fake.text()
