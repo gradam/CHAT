@@ -14,3 +14,4 @@ def test_create_object(fake, user):
     post = Post.objects.all()
 
     assert post.count() == 1
+
